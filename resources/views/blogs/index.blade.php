@@ -14,6 +14,6 @@
                 @method('DELETE')
                 <button type="submit" onclick="return confirm('Are you sure you want to delete this entry?')">Delete</button>
             </form>
-        </div>
+        </div><br>
     @endforeach
 @endsection
