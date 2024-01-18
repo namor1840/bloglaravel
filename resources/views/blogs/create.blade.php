@@ -1,12 +1,7 @@
-{{-- Para Laravel 7 o superior --}}
 @php
 use Collective\Html\FormFacade as Form;
 @endphp
 
-{{-- Para versiones anteriores de Laravel --}}
-{{--
-{!! Form::open(['route' => 'ruta']) !!}
---}}
 
 @extends('layouts.app')
 
