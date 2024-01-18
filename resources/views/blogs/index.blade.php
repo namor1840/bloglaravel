@@ -8,9 +8,9 @@
     @foreach($blogs as $blog)
         <div>
             <h2 class="text-red-900">{{ $blog->title }}</h2>
-            <p>{{ Str::limit($blog->body, 200) }}</p><br>
+            <p>{!! Str::limit(strip_tags($blog->body), 200) !!}</p><br>
 
-            <a href="{{ route('blogs.show', $blog->id) }}">More...</a>
+            <a href="{{ route('blogs.show', $blog->id) }}">Open entry</a>
         </div><br>
     @endforeach
 @endsection

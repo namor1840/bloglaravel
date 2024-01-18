@@ -1,23 +1,44 @@
+{{-- Para Laravel 7 o superior --}}
+@php
+use Collective\Html\FormFacade as Form;
+@endphp
+
+{{-- Para versiones anteriores de Laravel --}}
+{{--
+{!! Form::open(['route' => 'ruta']) !!}
+--}}
+
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto mt-8">
-        <h1 class="text-2xl font-semibold mb-4">Crear Nuevo Blog</h1>
+    <h1>Create Blog</h1>
 
-        <!-- Formulario de creación -->
-        <form action="{{ route('blogs.store') }}" method="post" class="max-w-md">
-            @csrf
-            <div class="mb-4">
-                <label for="title" class="block text-sm font-medium text-gray-600">Título</label>
-                <input type="text" name="title" id="title" class="form-input mt-1 block w-full" />
-            </div>
+    {!! Form::open(['route' => 'blogs.store']) !!}
+        <div class="form-group">
+            {!! Form::label('title', 'Title:') !!}
+            {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('body', 'Body:') !!}
+            {!! Form::textarea('body', null, ['id' => 'editor', 'class' => 'form-control', 'required']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+        </div>
+    {!! Form::close() !!}
 
-            <div class="mb-4">
-                <label for="body" class="block text-sm font-medium text-gray-600">Cuerpo</label>
-                <textarea name="body" id="body" rows="4" class="form-input mt-1 block w-full"></textarea>
-            </div>
-
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Guardar Blog</button>
-        </form>
-    </div>
+    <script src="https://cdn.tiny.cloud/1/eopet1geutqz32hb4zle4f1ron2bwkdoyav2bt5177iko2pb/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#editor',
+            menubar: false,
+            plugins: 'autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            }
+        });
+    </script>
 @endsection
