@@ -21,5 +21,6 @@
             </form>
         </div><hr><br>
     @endforeach
-
+        {{ $blogs->links() }}
+        
 @endsection
