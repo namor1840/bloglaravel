@@ -10,8 +10,8 @@ use Collective\Html\FormFacade as Form;
 <h1 class="text-3xl">Create entry</h1> <br>
 
     {!! Form::open(['route' => 'blogs.store']) !!}
-        <div class="form-group text-white">
-            {!! Form::label('title', 'Title:') !!}
+        <p class="text-white">Title:</p><div class="form-group ">
+            {{-- {!! Form::label('title', 'Title:') !!} --}}
             {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
         </div><br>
         <div class="form-group text-white">
