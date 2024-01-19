@@ -6,17 +6,18 @@ use Collective\Html\FormFacade as Form;
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create Blog</h1>
+
+<h1 class="text-3xl">Create entry</h1> <br>
 
     {!! Form::open(['route' => 'blogs.store']) !!}
-        <div class="form-group">
+        <div class="form-group text-white">
             {!! Form::label('title', 'Title:') !!}
             {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
-        </div>
-        <div class="form-group">
+        </div><br>
+        <div class="form-group text-white">
             {!! Form::label('body', 'Body:') !!}
             {!! Form::textarea('body', null, ['id' => 'editor', 'class' => 'form-control', 'required']) !!}
-        </div>
+        </div><br>
         <div class="form-group">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
         </div>
@@ -27,6 +28,7 @@ use Collective\Html\FormFacade as Form;
         tinymce.init({
             selector: '#editor',
             menubar: false,
+            content_style: 'body { background-color: transparent; }',
             plugins: 'autolink lists link image charmap print preview hr anchor pagebreak',
             toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
             setup: function (editor) {

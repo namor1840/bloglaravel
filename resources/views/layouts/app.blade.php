@@ -8,12 +8,16 @@
     <title>Blog</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body class="font-sans bg-gray-100">
+<body class="font-sans bg-black">
 
-    <nav class="bg-blue-500 p-4">
+    <nav class="bg-green-500 p-4">
         <ul class="flex space-x-4">
             <li><a href="{{ route('blogs.index') }}" class="text-white">Home</a></li>
             <li><a href="{{ route('blogs.create') }}" class="text-white">Create entry</a></li>
+            <li>    <form action="{{ route('blogs.search') }}" method="GET">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form></li>
         </ul>
     </nav>
 

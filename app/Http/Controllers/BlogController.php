@@ -45,6 +45,24 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
+
+     public function search (Request $request)
+     {
+
+         $query = $request->input('query');
+
+         $blogs = Blog::where('title', 'like', "%$query%")
+                      ->orWhere('body', 'like', "%$query%")
+                      ->get();
+
+                      if ($blogs->isEmpty()) {
+                         return view('blogs.search', ['blogs' => [], 'query' => $query]);
+                     }
+                    //  dd($blogs);
+
+         return view('blogs.search', compact('blogs', 'query'));
+
+     }
     public function show(string $id)
     {
         $blog = Blog::find($id);
@@ -88,4 +106,5 @@ class BlogController extends Controller
 
         return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully');
     }
+
 }
