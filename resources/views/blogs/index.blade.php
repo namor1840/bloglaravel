@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <center><h1 class="text-5xl text-white">Blog Laravel</h1></center><br>
+    <h1 class="text-5xl text-white text-center">Blog Laravel</h1><br>
 
     @foreach ($blogs as $blog)
         <div>
@@ -22,5 +22,5 @@
         </div><hr><br>
     @endforeach
         {{ $blogs->links() }}
-        
+
 @endsection

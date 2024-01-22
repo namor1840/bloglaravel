@@ -5,7 +5,8 @@
 
     {!! Form::model($blog, ['route' => ['blogs.update', $blog->id], 'method' => 'PUT']) !!}
         <div class="form-group">
-            {!! Form::label('title', 'Title:') !!}
+            <p class="text-white">Title:</p>
+            {{-- {!! Form::label('title', 'Title:') !!} --}}
             {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
         </div>
         <div class="form-group text-white">

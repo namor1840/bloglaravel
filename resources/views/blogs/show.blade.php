@@ -3,7 +3,7 @@
 @extends('layouts.app') <!-- Ajusta según tu estructura de diseño -->
 
 @section('content')
-   <center><h1 class="text-white">{{ $blog->title }}</h1><br></center>
+   <h1 class="text-white text-4xl text-center">{{ $blog->title }}</h1><br>
 
    <div class="text-white">
     {!! $blog->body !!}

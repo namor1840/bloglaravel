@@ -5,6 +5,7 @@
 @section('content')
     <div class="container mx-auto my-8 text-white">
         <h1 class="text-4xl font-bold mb-4">Search Results</h1>
+        <hr><br>
 
         @if(count($blogs) > 0)
             <ul class="list-disc pl-4">
