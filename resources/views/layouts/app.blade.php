@@ -9,13 +9,13 @@
 </head>
 <body class="font-sans bg-black">
 
-    <nav class="bg-green-500 p-4">
+    <nav class="bg-green-400 p-4">
         <ul class="flex space-x-4">
-            <li><a href="{{ route('blogs.index') }}" class="text-white">Home</a></li>
-            <li><a href="{{ route('blogs.create') }}" class="text-white">Create entry</a></li>
-            <li>    <form action="{{ route('blogs.search') }}" method="GET">
+            <li><a href="{{ route('blogs.index') }}" class="text-black">Home</a></li>
+            <li><a href="{{ route('blogs.create') }}" class="text-black">Create entry</a></li>
+            <li><form action="{{ route('blogs.search') }}" method="GET">
                 <input type="text" name="query" placeholder="Search...">
-                <button type="submit" class="text-white">Search</button>
+                <button type="submit" class="text-black">Search</button>
             </form></li>
         </ul>
     </nav>
