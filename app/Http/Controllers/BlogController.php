@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Like;
 use Illuminate\Support\Facades\DB;
 
 
@@ -45,9 +46,7 @@ class BlogController extends Controller
         return redirect('/blogs')->with('success', 'Blog Created Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
 
      public function search (Request $request)
      {
@@ -68,22 +67,21 @@ class BlogController extends Controller
      }
     public function show(string $id)
     {
-        $blog = Blog::find($id);
-        return view('blogs.show', ['blog' => $blog]);
+        $blog = Blog::findOrFail($id);
+        $likes = $blog->likes()->count();
+        $dislikes = $blog->dislikes()->count();
+
+        return view('blogs.show', compact('blog', 'likes', 'dislikes'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         $blog = Blog::find($id);
         return view('blogs.edit', ['blog' => $blog]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -99,15 +97,36 @@ class BlogController extends Controller
         return redirect('/blogs')->with('success', 'Blog Updated Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $blog = Blog::find($id);
         $blog->delete();
 
         return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully');
+    }
+    public function like($id)
+    {
+        $blog = Blog::findOrFail($id);
+        $like = new Like([
+            'blog_id' => $blog->id,
+            'type' => Like::LIKE
+        ]);
+        $like->save();
+
+        return back();
+    }
+
+    public function dislike($id)
+    {
+        $blog = Blog::findOrFail($id);
+        $dislike = new Like([
+            'blog_id' => $blog->id,
+            'type' => Like::DISLIKE //
+        ]);
+        $dislike->save();
+
+        return back();
     }
 
 }

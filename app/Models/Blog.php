@@ -16,4 +16,13 @@ class Blog extends Model
         return $this->hasMany(Comment::class);
 
     }
+    public function likes()
+    {
+        return $this->hasMany(Like::class)->where('type', Like::LIKE);
+    }
+
+    public function dislikes()
+    {
+        return $this->hasMany(Like::class)->where('type', Like::DISLIKE);
+    }
 }

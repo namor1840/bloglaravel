@@ -11,7 +11,26 @@
 
     <a href="{{ route('blogs.edit', $blog->id) }}"><?xml version="1.0" ?><svg class="feather feather-edit" fill="white" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></a>
 
-<br><hr>
+<br>        <div class="mt-4">
+    <!-- Enlace para Me gusta -->
+    <form action="{{ route('blogs.like', $blog->id) }}" method="POST" class="inline-block">
+        @csrf
+        <button type="submit" class="text-blue-400">
+            <i class="fa fa-thumbs-up"></i> Me gusta
+            <span class="text-blue-400 ml-2">{{ $blog->likes()->count() }}</span> <!-- Color azul para la cantidad de Me gusta -->
+        </button>
+    </form>
+
+    <!-- Enlace para No me gusta -->
+    <form action="{{ route('blogs.dislike', $blog->id) }}" method="POST" class="inline-block ml-4">
+        @csrf
+        <button type="submit" class="text-red-400">
+            <i class="fa fa-thumbs-down"></i> No me gusta
+            <span class="text-red-400 ml-2">{{ $blog->dislikes()->count() }}</span> <!-- Color rojo para la cantidad de No me gusta -->
+        </button>
+    </form>
+</div>
+><hr>
     <div>
         <h2 class="text-white">Comments</h2>
 

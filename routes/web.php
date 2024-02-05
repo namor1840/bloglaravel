@@ -28,4 +28,6 @@ Route::post('/blogs/{blog}/comments', [CommentController::class, 'store'])->name
 Route::get('/blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
 Route::put('/blogs/{id}', [BlogController::class, 'update'])->name('blogs.update');
 Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+Route::post('/blogs/{id}/like', [BlogController::class, 'like'])->name('blogs.like');
+Route::post('/blogs/{id}/dislike', [BlogController::class, 'dislike'])->name('blogs.dislike');
 
